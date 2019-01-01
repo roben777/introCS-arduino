@@ -1,5 +1,6 @@
 # introCS-arduino
 Laboratory manual for an introductory course to Computer Science using Arduino projects
+
 Robert Benkoczi (roben777@gmail.com)
 
 This manual accompanies the lab activities for an Introduction to Computer Science, offered at the University of Lethbridge, Canada. Students will learn to make simple projects using the Arduino micro-controller. The first part of this manual concentrates on four basic functions of a micro-controller: reading digital and analog signals, and generating digital and analog signals. Then, in Part 2, the students will start working on a larger project that involves controlling the movement of a simple three wheel robotic gadget and making it autonomous to some degree. 
