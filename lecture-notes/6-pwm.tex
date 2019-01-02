@@ -1,0 +1,160 @@
+\documentclass[aspectratio=1610]{beamer}
+
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=false,
+}
+
+\usepackage{listings,calc,graphicx}
+
+\title % [short title] (optional, use only with long paper titles)
+{CPSC 1000: Introduction to Computer Science}
+
+\subtitle{Pulse width modulation (PWM) with Arduino} % (optional)
+
+\author{Robert Benkoczi, C556\\\url{robert.benkoczi@uleth.ca}}
+\date{16-Oct-2018\\(Week 6)}
+
+% for figures created with IPE
+%\pdfpagebox5
+
+\lstloadlanguages{C}
+\lstset{language=C,tabsize=2,aboveskip=-22pt,belowskip=-22pt,keepspaces,
+  basicstyle=\small\ttfamily,}
+
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+%%%%%%
+
+\begin{frame}[t,plain]{Objectives}
+\begin{itemize}
+\item Students will write Arduino
+  programs that output a digital signal simulating an analog signal,
+  using pulse width modulation on the Arduino PWM digital pins.
+\item  Resources: 
+\begin{itemize}
+\item Arduino Notebook 
+\item Arduino Programming Language
+  Reference
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Why analog signal output?}
+
+\begin{itemize}
+\item<1> Power source with adjustable voltage. DC motor speed =
+  determined by the amount of power transferred from the electrical
+  source (Ohm's law).
+
+\item<2> Set the colour of an RGB LED.
+
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Pulse width modulation}
+Arduino PWM frequency approx 490 Hz
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Programming}
+\begin{itemize}
+\item No setup needed.
+
+\item \lstinline$analogWrite(pin, value)$:
+\end{itemize}
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Question}
+Can we implement PWM using digital output?
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Example}
+
+Choose the LED intensity  randomly, and maintain it for 2 sec before
+choosing another intensity.
+\end{frame}
+
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Example 2}
+Set the PWM value proportional to the value of $x$ relative to a range
+$m \le x \le M$.
+\end{frame}
+
+%%%%%%
+
+
+\begin{frame}[plain]{PART II}
+{\large Controlling motors using the Adafruit motor shield v. 2.3}
+\end{frame}
+
+
+%%%%%%
+
+\begin{frame}[t,plain]{Objectives}
+\begin{itemize}
+\item Students will write Arduino
+  programs that will control the speed of a simple 6V DC motor using
+  an additional circuit: the Adafruit motor shield.
+\item  Resources: 
+\begin{itemize}
+\item Arduino Notebook 
+\item Arduino Programming Language
+  Reference
+\item The Adafruit motor shield documentation: 
+\url{https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino/library-reference}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}[t,plain,fragile]{Using the library:}
+
+To load the library definitions, types, and functions:
+
+\begin{semiverbatim}
+\begin{lstlisting}
+#include <Wire.h>
+#include <Adafruit_MotorShield.h>
+#include "utility/Adafruit_MS_PWMServoDriver.h"
+\end{lstlisting}
+\end{semiverbatim}
+
+
+\medskip
+
+To define the objects for the shield and motor(s):
+
+\begin{semiverbatim}
+\begin{lstlisting}
+Adafruit_MotorShield AFMS = Adafruit_MotorShield(); 
+Adafruit_DCMotor *myMotor = AFMS.getMotor(4);
+\end{lstlisting}
+\end{semiverbatim}
+\end{frame}
+
+
+
+\end{document}

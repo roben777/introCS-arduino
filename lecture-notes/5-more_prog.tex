@@ -1,0 +1,174 @@
+\documentclass[aspectratio=1610]{beamer}
+
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=false,
+}
+
+\usepackage{listings,calc,graphicx}
+
+\title % [short title] (optional, use only with long paper titles)
+{CPSC 1000: Introduction to Computer Science}
+
+\subtitle{Arduino basic program template} % (optional)
+
+\author{Robert Benkoczi, C556\\\url{robert.benkoczi@uleth.ca}}
+\date{(9,11)-Oct-2018\\(Week 5)}
+
+% for figures created with IPE
+%\pdfpagebox5
+
+\lstloadlanguages{C}
+\lstset{language=C,tabsize=2,aboveskip=-22pt,belowskip=-22pt,keepspaces,
+  basicstyle=\small\ttfamily,}
+
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+%%%%%%
+
+\begin{frame}[t,plain]{Objectives}
+\begin{itemize}
+\item Using the Arduino Notebook and the Arduino Programming Language
+  Reference, both available on Moodle, and the functions explained
+  here, students will write Arduino programs that read input from
+  sensors or the serial monitor, and perform actions based on these
+  inputs. 
+\item Students will write Arduino programs that receive data to/from
+  the serial monitor.
+\item Students will use \lstinline$random$ and \lstinline$randomSeed$
+  functions to add ``chance'' to their programs.
+\item Students will write loop statements.
+\end{itemize}
+\end{frame}
+
+%%%%%%%
+\begin{frame}[plain,t]{The general template (see Lab Assignment 3 and
+    the bunus question)}
+
+
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Sending data to the serial monitor (recap)}
+
+\begin{itemize}
+\item \lstinline$Serial.begin(9600);$
+
+\bigskip
+\item \lstinline$Serial.println(``Hello world'');$
+
+\smallskip
+Example 1: write a ``hello world'' program which sends the message
+to the serial monitor every 500 ms.
+
+\bigskip
+\bigskip
+\item Chance: \lstinline$random(min, max)$
+
+\smallskip
+Example 2: display on serial monitor a random integer between 1 and
+100, every 500 ms.
+
+\bigskip
+\item The need for \lstinline$randomSeed(seed)$. We can supply a different
+  \emph{seed} value to the random number generator by measuring an
+  unconnected analog pin (we measure noise).
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Receiving data from serial monitor}
+
+Why? We can configure our project in non-trivial ways. 
+
+\begin{itemize}
+\item \lstinline$Serial.read()$: returns -1 if no data available, otherwise
+returns the first byte read (byte = 8 bit integer).
+
+\smallskip
+Example 3: read one byte and echo it back to the serial monitor. 
+
+\vspace*{.2\textheight}
+\item Read the byte into a char variable. 
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Output only when character received: if
+    statement}
+
+
+\vfill
+Example 4: \lstinline$Serial.available()$ - output only when a
+character is received.
+
+\end{frame}
+
+
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Read a string (text value) from serial monitor}
+
+String: sequence of characters. Can be stored into a \emph{String}
+variable.
+
+\bigskip
+\begin{itemize}
+\item Append characters to a String variable.
+
+\smallskip
+Example 5: read data as a string from serial monitor and echo it back.
+
+\smallskip
+\item while loop syntax:
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Read a numeric value from serial monitor}
+
+\begin{itemize}
+\item \lstinline$str.toInt()$ (\emph{str} is a String variable): Read
+  a string, then convert it to an int.
+
+\smallskip
+Example 6: Define a \emph{readInt()} function. Use it to seed the
+random number generator instead of using the value of noise.
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%
+
+\begin{frame}[plain,t]{Exercises}
+
+\begin{itemize}
+\item Blink a LED, but make the LED skip every fourth blink.
+\item Make the LED be on and off for a period of time
+  that changes randomly.
+\item Connect 10 LEDs to digital pins 2-11. Light one LED at a time,
+  simulating a ``left to right'' motion. Hint: use a for loop to
+  control the on/off pattern. 
+\end{itemize}
+\end{frame}
+
+
+\end{document}

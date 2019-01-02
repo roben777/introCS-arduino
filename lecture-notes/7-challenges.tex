@@ -1,0 +1,96 @@
+\documentclass[aspectratio=1610]{beamer}
+
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{hyperref}
+
+\hypersetup{
+colorlinks=false,
+}
+
+\usepackage{listings,calc,graphicx}
+
+\title % [short title] (optional, use only with long paper titles)
+{CPSC 1000: Introduction to Computer Science -- PART 2}
+
+\subtitle{The project challenges} % (optional)
+
+\author{Robert Benkoczi, C556\\\url{robert.benkoczi@uleth.ca}}
+\date{25-oct-2018\\(Week 7)}
+
+% for figures created with IPE
+%\pdfpagebox5
+
+\lstloadlanguages{C}
+\lstset{language=C,tabsize=2,aboveskip=-22pt,belowskip=-22pt,keepspaces,
+  basicstyle=\small\ttfamily,}
+
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+%%%%%%
+
+\begin{frame}[t,plain]{Objectives}
+\begin{itemize}
+\item CPSC 1000 course project: students will program a three wheel
+  robot controlled with an Arduino microcontroller that will seek a
+  target object.
+\item  Resources: 
+\begin{itemize}
+\item Arduino Notebook 
+\item Arduino Programming Language
+  Reference
+\item The Adafruit motor shield documentation: 
+\url{https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino/library-reference}
+\item The course notes (the probing/action programming template,
+  working with various sensors, etc.)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}[t,plain,fragile]{Introduction}
+The robot:
+
+\begin{itemize}
+\item Two motors controlling one rubber wheel each.
+\item To move forward, choose the ``same'' speed to the two motors.
+\item To turn, set different speeds to the two motors.
+\item Various sensors can be attached to the body of the robot.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%
+
+\begin{frame}[t,plain]{Three challenges (target seeking robot)}
+The project is decomposed into three challenges, increasing in
+complexity.
+
+\medskip
+\begin{itemize}
+\item Task for all challenges: the robot should approach the target
+  object (a box) within 20 cm from it, but without touching it.
+
+\medskip
+\item Setup for Challenge 1: robot facing the target object at
+  distance 1 m from it.
+ \item Setup for Challenge 2: robot facing the target object at an
+   arbitrary distance between 1 m and 2 m.
+\item Setup for Challenge 3: set at an arbitrary distance between 1 m
+  and 2 m from the target, oriented arbitrarily.
+
+\medskip
+\item The target object: box with a source of light on top. 
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
