@@ -31,7 +31,7 @@
 
 \title{CPSC 1000 - Laboratory manual}    % Supply information
 \author{Robert Benkoczi}              %   for the title page.
-\date{\today\\ version 3.0}  %   Use current date. 
+\date{\today\\ version 3.0.1}  %   Use current date. 
 
 %\renewcommand{\chaptername}{Activity}
 
@@ -739,7 +739,7 @@ frequently.
 %%%%%%
 \chapter{Activity 3: push button (digital input)}\label{ch2.chap}
 
-\section{Lab activity objectives}
+\section{Lab activity objectives}\label{se:obj2}
 
 Any interesting Arduino project should allow for some user input. The
 simplest way for a user to interact with an Arduino project is through
@@ -778,15 +778,15 @@ In this session, students will:
 
 \section{Component list}
 
-Including the components necessary for the lab assignment, the following
+A few of the exercises at the end of this lab require additional components that what is strictly necessary for the activities proposed. The following
 parts are needed:
 \begin{compactitem}[--]
   \item 1 x Arduino micro-controller
   \item 1 x USB cable
   \item 1 x breadboard
   \item 8 or 10 M-M jumper wires of assorted lengths
-	\item 1 x 220 Ohm resistor
-	\item 1 x LED
+	\item 2 x 220 Ohm resistor
+	\item 2 x LED
   \item 1 x 10k Ohm Resistor (Pull-up)
   \item 1 x push button
 \end{compactitem}
@@ -832,6 +832,7 @@ be inserted in columns \emph{d} and \emph{g}.
 
 \section{Arduino program}
 
+Download the Arduino source code called \emph{exp3\_button.ino} from the source code folder in the lab manual section on Moodle.
 In this program, we use the global variable \lstinline$LED_state$ to
 remember whether the LED is on or off. We define two functions,
 \lstinline$isButtonPressed$ which returns true if the button is
@@ -906,7 +907,20 @@ during the lab, to investigate these questions.
   conditions that can trigger LED state changes: light intensity
   increases from low (below a certain threshold) to high value (above
   the threshold), the intensity of sound is above a certain
-  threshold. 
+  threshold.
+
+\item Modify the circuit from Fig.~\ref{fig:SchemEx2} so that the button is connected with a pull-down resistor instead of a pull-up resistor. Check the lecture notes for information about pull-down resistors. Modify the code accordingly. The project should have the same functionality as described in Section \ref{se:obj2}.
+
+\item Start with the circuit from Fig.\ref{fig:SchemEx2}. Add a second LED. Modify the program from Listing \ref{lst:ex2} so that pressing the botton will cycle the LED-s through the four states defined by the following table.
+  
+  \begin{tabular}{ccc}
+    State & LED 1 & LED 2 \\ \hline
+    0 & OFF & OFF \\
+    1 & ON & OFF \\
+    2 & OFF & ON \\
+    3 & ON & ON
+  \end{tabular}
+
 \end{enumerate}
 
 
