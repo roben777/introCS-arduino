@@ -31,7 +31,7 @@
 
 \title{CPSC 1000 - Laboratory manual}    % Supply information
 \author{Robert Benkoczi}              %   for the title page.
-\date{\today\\ version 3.0.1}  %   Use current date. 
+\date{\today\\ version 3.0.2}  %   Use current date. 
 
 %\renewcommand{\chaptername}{Activity}
 
@@ -980,8 +980,8 @@ below:
   \item 1 x USB cable
   \item 1 x breadboard
   \item 8 or 10 M-M jumper wires of assorted lengths
-	\item 1 x 220 Ohm resistor
-	\item 1 x LED
+	\item 2 x 220 Ohm resistor
+	\item 2 x LED
   \item 1 x 10k Ohm Variable Resistor (Potentiometer)
 \end{compactitem}
 
@@ -1082,10 +1082,10 @@ new function.
 \item\label{ex4:ledpot} Add a potentiometer to the circuit in
   Fig.~\ref*{fig:SchemEx4} using the circuit from Chapter \ref{se:pot}
   as reference. Modify the code in Listing \ref*{lst:ex4} to read the
-  value of the potentiometer and to adjust the intensity of the LED as
+  value of the potentiometer (see Listing \ref{lst:ex3}) and to adjust the intensity of the LED as
   a function of the position of the knob on the potentiometer. More
   precisely, the LED should be off when the analog signal read is $0$
-  and should have maximum intensity when the analog signal read is $1023$.
+  and should have maximum intensity when the analog signal read is $1023$.  Note: the LED intensity must change immediately in response to adjusting the potentiometer (do not use \lstinline$delay()$). 
 
 \item Extend Exercise \ref*{ex4:ledpot} with a second LED in the
   circuit. Position the LEDs in such a way that one of the LEDs is to
