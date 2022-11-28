@@ -31,7 +31,7 @@
 
 \title{CPSC 1000 - Laboratory manual}    % Supply information
 \author{Robert Benkoczi}              %   for the title page.
-\date{\today\\ version 3.1.0}  %   Use current date. 
+\date{\today\\ version 3.1.1}  %   Use current date. 
 
 %\renewcommand{\chaptername}{Activity}
 
@@ -1309,15 +1309,16 @@ that must accompany every project activity:
   \item 1 x three wheel robot.
   \item 1 x Ultrasonic distance sensor.
   \item 2 x Light sensor.
+  \item 1 x sound sensor.
   \item An assortment of connection wires: male-male, male-female, and
-    female-female, say 5 of each type.
+    female-female, say 10 of each type.
 \end{compactitem}
 
 In addition, the students can choose to add, from a special project supply
 box, various other components that they might wish to incorporate:
 \begin{compactitem}[--]
 \item Resistors (220 $\Omega$).
-\item Potentiometers (10 k$\Omega$).
+\item Potentiometers (10-30 k$\Omega$).
 \item LED-s.
 \item Pushbuttons.
 \item Breadboards.
@@ -1357,10 +1358,10 @@ whether the challenge was met or not.
   too significantly for your taste, consider compensating by adjusting
   your code to feed different PWM signals to the motors. 
 
-\item You can use a ruler to measure the distance travelled by the robot
+\item You can use a ruler to measure the distance traveled by the robot
   during one second. Perform three or four experiments and record the
-  distance travelled during each experiment. Let $x$ be the average
-  distance travelled by the robot in one second, measured in
+  distance traveled during each experiment. Let $x$ be the average
+  distance traveled by the robot in one second, measured in
   metres. Then, to make the robot move forward for approximately 1 metre,
   keep the motors on for time $t=\frac{1}{x}$ seconds. Use this information to
   write the code that will move the robot within 20 cm of the target box.
@@ -1463,7 +1464,7 @@ The robot must also be equipped with either a push-button or a sound sensor. Pus
 %%%%%%%
 \section{Fast track: application \ref{app.race}}
 
-\subsection{Challenge F2: race on a straight line and stop after a fixed distance is travelled}
+\subsection{Challenge F2: race on a straight line and stop after a fixed distance is traveled}
 
 Pairs of robots will race on a straight trajectory measuring between 3 m and 5 m. Alternatively, the robots can race alone but they will be timed. There will be a start line and a finish line. The robots are placed at the start line. The robots begin racing when a loud sound signal is given. They must stop after passing the finish line and must not hit any obstacles or other robots. The first robot to stop after passing the finish line wins.
 
@@ -1564,6 +1565,41 @@ the left and the right sensors.
 \end{figure}
 
 
+%%%%%%%%%%
+\section{Programming and connecting the light and sound sensors}
+
+\begin{figure}[tb]
+  ~
+  \hfill
+  \includegraphics[width=.4\textwidth]{figs/light.jpg}
+  \hfill
+  \includegraphics[width=.3\textwidth]{figs/sound.jpg}
+  \hfill
+  ~
+  \caption{Left: light sensor. Right: the back of the sound sensor}\label{fig:light-sound}
+\end{figure}
+
+The light and sound sensors we are using are very simple sensors that generate analog signals. Please use the code from Section \ref{se:pot} that reads a general analog signal to experiment with these sensors.
+
+\paragraph{The light sensor:} Examine Fig.~\ref{fig:light-sound}. The connection is simple. Use the group of black pins on the top with a female to female wire and connect as follows.
+
+\smallskip
+\begin{tabular}{c c}
+  \toprule
+  Sensor pin label & Arduino pin \\ \midrule
+  V & 5 V \\
+  G & GND \\
+  S & one of A0-A5 \\ \bottomrule
+\end{tabular}
+\smallskip
+
+The light sensor can be configured in digital mode, too. Notice the white switch in the figure. Make sure the switch is moved towards label A (analog mode). When in digital mode (switch towards label D) the blue potentiometer  defines a reference level. Any analog signal below this reference generates a digital LOW signal on the D pin, and any analog signal higher than the reference generates a HIGH digital signal on the digital pin D. The potentiometer can be turned using a Phillips screwdriver.
+
+For this project, it is probably simpler to only use analog mode. However, if you feel that digital mode works better for your project, you are welcome to use it.
+
+\paragraph{The sound sensor:} The sound sensor is simpler than the light sensor as it has no digital mode. The connections, as expected are identical with the connections for the light sensor (see the table above).
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
@@ -1584,6 +1620,8 @@ the left and the right sensors.
 \item[v 3.0] Part II completely revised. Project challenges introduced.
 
 \item[v 3.1.0] Part II: additional challenges introduced. Introduced a \emph{fast} stream with only two challenges instead of three. Removed the project log requirement.
+
+  \item[v 3.1.1] Part II: added information about programming and connecting the sound and light sensors in the projects.
   
 \end{description}
  
