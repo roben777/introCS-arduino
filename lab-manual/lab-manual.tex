@@ -1289,10 +1289,10 @@ on our robotics project.
 
 One of the following robot applications can be chosen. 
 \begin{enumerate}[{A}1:]
-\item Seeker. The robot must approach a
+\item\label{app.seek} Seeker. The robot must approach a
 target box no farther than 20 cm away, but without touching
 it. The robot must start seeking at the press of a button or when triggered by a sound signal.
-\item Racer. The robot must race as fast as it can, on a strainght line. It must stop after reaching the finish line, which is marked by a white tape on the ground.  
+\item\label{app.race} Racer. The robot must race as fast as it can, on a strainght line. It must stop after reaching the finish line, which is marked by a white tape on the ground.  The start of the race is triggered by a loud sound.
 \end{enumerate}
 
 
@@ -1325,32 +1325,28 @@ box, various other components that they might wish to incorporate:
 
 
 %%%%%%%%%%%
+\section {Project challenges}
 
-\section{Challenge 1: Straight line trajectory}\label{proj1:chap}
+Two versions of the project can be completed depending on the time available for the project: a normal track which requires completing three challenges, and a fast track which requires completing two challenges. The first challenge is common to both tracks.
 
-For this challenge, the robot will be placed at a distance of exactly
-1 m, measured from the front of the robot to the target box. The robot
-is facing the box. The robot should be stationary initially, to allow
-this placement. In order to reach the target, the robot must travel on
+\subsection{Challenge 1: Straight line trajectory for applications \ref{app.seek} and \ref{app.race} }\label{proj1:chap}
+
+For this challenge, the robot should be stationary initially, to allow it to be placed on the ground. The robot must travel on
 a straight line for at least 80 cm, but for no more than 100 cm. The
 robot should remain stationary at the end of its travel, to determine
 whether the challenge was met or not.
 
 
-\subsection{Ideas and suggestions}
+\paragraph{Ideas and suggestions:}
 
 \begin{compactenum}[1)]
-  \item Before starting any activity for the project, record your work
-    in the project log as discussed in the lectures.
 \item Connect the shield and motors as for Exercise \ref*{ex6:ch5}
   from Chapter
   \ref*{ch:ex5}. 
 \item Download the sample Arduino code which contains the
   configuration code for the motor shield. 
 \item Add code that makes the robot move straight for exactly one
-  second. Choose the speed of movement by experimenting. A high speed
-  might drain the batteries too quickly, a low speed might take too
-  long to move the robot for a given distance. Remember, to upload
+  second. Choose the speed of movement by trial. Remember, to upload
   your code you need to connect the Arduino to the workstation using
   the USB cable, but to test the code, you should un-tether the
   Arduino and place the robot on the ground.
@@ -1369,8 +1365,7 @@ whether the challenge was met or not.
   keep the motors on for time $t=\frac{1}{x}$ seconds. Use this information to
   write the code that will move the robot within 20 cm of the target box.
 
-\item In order to facilitate the positioning of the robot in front of
-  the target box, the robot must be stationary at first. One can use
+\item In order to untether the robot and lay it on the ground, the robot must be stationary at first. One can use
   delays to implement this behaviour, but a more reliable approach is
   to add a pushbutton to the robot. The robot is initially
   stopped. Pushing the button will make the robot move straight 
@@ -1385,7 +1380,9 @@ from the target box and without touching the target box.
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Challenge 2: straight line trajectory, but variable distance}
+\section{Normal track, application \ref{app.seek}}
+
+\subsection{Challenge 2: straight line trajectory, but variable distance}
 \label{proj2:chap} 
 
 For this challenge, the robot will be placed at a distance that can
@@ -1397,22 +1394,19 @@ from the target box and without touching the target box. The robot
 should remain stationary at the end of its travel, to determine whether
 the challenge was met or not.
 
-\subsection{Ideas and suggestions}
+\paragraph{Ideas and suggestions}
 
 \begin{compactenum}[1)]
-  \item Before starting any activity for the project, record your work
-    in the project log as discussed in the lectures.
 \item Use the ultrasonic distance sensor to detect when the box is
   within an acceptable range.
-  \item To write your program, use the development branch idea
-    discussed in class to create a function which returns the distance
+  \item To write your program, consult Chapter \ref{resource.ch} and create a function which returns the distance
     measured by the distance sensor.
 \end{compactenum}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Challenge 3: straight line, arbitrary distance, and arbitrary
+\subsection{Challenge 3: straight line, arbitrary distance, and arbitrary
 orientation}
 
 For this challenge, the robot will be placed at a distance that can
@@ -1427,15 +1421,70 @@ stationary at the end of its travel, to determine whether the challenge
 was met or not.
 
 
-\subsection{Ideas and suggestions}
+\paragraph{Ideas and suggestions}
 
 \begin{compactenum}[1)]
-  \item Before starting any activity for the project, record your work
-    in the project log as discussed in the lectures.
   \item To detect the direction towards the source of light placed on
     the target, use two light sensors as suggested in Chapter
     \ref{resource.ch}. 
 \end{compactenum}
+
+
+%%%%%%%%%%%
+\section{Fast track: application \ref{app.seek}}
+
+\subsection{Challenge F2: seek by moving on a straight line, for an arbitrary distance}
+
+The robot will be placed at a distance that can
+vary between 1 and 2 m, measured from the front of the robot to the
+target box. The robot will face the box. The robot should be stationary
+initially, to allow this placement. In order to reach the target, the
+robot must travel on a straight line and stop no farther than 20 cm
+from the target box and without touching the target box. The robot
+should remain stationary at the end of its travel, to determine whether
+the challenge was met or not.
+
+The robot must use a distance sensor to determine if it has approached the target box sufficiently. The robot must also be equipped with an LED that indicates its state. The built-in Arduino LED can be used for this purpose. 
+
+\smallskip
+\begin{tabular}{l p{8cm}}
+  \toprule
+  LED & Status \\
+  \midrule
+  off & The robot is stationary / not seeking \\
+  blinking & The robot is seeking / moving towards the target \\
+  on, steady & The robot is within the target distance from the box, it has found the target \\
+  \bottomrule
+\end{tabular}
+\smallskip
+
+The robot must also be equipped with either a push-button or a sound sensor. Pushing the button or making a loud noise will toggle the robot between the \emph{not seeking} and  \emph{seeking / found} states.
+
+%%%%%%%
+\section{Fast track: application \ref{app.race}}
+
+\subsection{Challenge F2: race on a straight line and stop after a fixed distance is travelled}
+
+Pairs of robots will race on a straight trajectory measuring between 3 m and 5 m. Alternatively, the robots can race alone but they will be timed. There will be a start line and a finish line. The robots are placed at the start line. The robots begin racing when a loud sound signal is given. They must stop after passing the finish line and must not hit any obstacles or other robots. The first robot to stop after passing the finish line wins.
+
+The distance between the start and finish lines will be the same from lab session to lab session. The students can write their program under this assumption. A robot that does not stop is disqualified. Winning is not important. Points will be assigned to students as long as their robots finish the race. 
+
+An LED must be used to indicate the status of the robot. The built-in Arduino LED may be used for this purpose.
+
+\smallskip
+\begin{tabular}{l p{8cm}}
+  \toprule
+  LED & Status \\
+  \midrule
+  blinking & The robot is stopped and ready to start racing \\
+  on, steady & The robot is racing \\
+  off & The robot has stopped after a race \\
+  \bottomrule
+\end{tabular}
+\smallskip
+
+  The robot must also have a push-button which toggles the state of the robot between the off state (stopped, not ready to race) and blinking state (stopped but ready to race).
+
 
 
 %%%%%
@@ -1485,6 +1534,11 @@ function \lstinline$pulseIn(pin, value)$:
   microseconds, where $n$ is an unsigned integer.
 \end{compactitem}
 
+A sample program that outputs the measurements taken by the distance sensor is provided below.
+
+\lstinputlisting[caption={Reading distance measurements from the distance sensor}]{src/distance.ino}
+
+
 \section{Using the light sensors}
 
 Two light sensors can be used to detect the direction for a source of
@@ -1498,8 +1552,7 @@ of paper creates a shadow. This information can be used to rotate the
 robot in the appropriate direction until the source of light is in
 front of the robot.
 
-For your program, consider using the probe/action template, where one
-of the state variables is the difference between the measurements from
+For your program, consider using the advanced programming techniques described in class. Define a class that maintains the difference between the measurements from
 the left and the right sensors.
 
 \begin{figure}[tb]
